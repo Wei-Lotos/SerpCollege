@@ -1,4 +1,4 @@
-```jsx
+```HTML
 <?php
 
   include "DataBase.php";

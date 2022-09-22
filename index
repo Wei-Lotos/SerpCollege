@@ -1,0 +1,59 @@
+<?php
+
+  include "DataBase.php";
+
+  $result = mysqli_query($connect,"SELECT * FROM `sait`");
+
+
+ ?>
+
+<!DOCTYPE html>
+<html lang ="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>College</title>
+</head>
+<body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3
+  px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-600">SerpCollege</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="#">Главная</a>
+    <a class="p-2 text-dark" href="#">Абитуриенту</a>
+    <a class="p-2 text-dark" href="#">Студенту</a>
+    <a class="p-2 text-dark" href="#">Выпускнику</a>
+    <a class="p-2 text-dark" href="#">Педагогу</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="#">Подать заявку</a>
+  </div>
+  <div class="container mt-5">
+    <h3 class="mb-5">Специальности и профессии</h3>
+<!---Начало блока--->
+    <?php
+      While($sait = mysqli_fetch_assoc($result))
+      {
+        ?>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal"><?php echo $sait['title']; ?></h4>
+          </div>
+          <div class="card-body">
+            <img src ="img/<?php echo $sait['image']; ?>" class ="img-thumbnail">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li><?php echo $sait['text']; ?></li>
+
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Дополнительная информация</button>
+          </div>
+        </div>
+        <?php
+      }
+     ?>
+<!---Конец блока--->
+  </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-
+```jsx
 <?php
 
   include "DataBase.php";
@@ -58,3 +58,4 @@
   </div>
 </body>
 </html>
+```
